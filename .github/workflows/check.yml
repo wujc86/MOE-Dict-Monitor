@@ -2,7 +2,7 @@ name: MOE Dictionary Health Check
 
 on:
   schedule:
-    - cron: '0 * * * *' # 每小時整點執行
+    - cron: '0/5 * * * *' # 每小時整點執行
   workflow_dispatch:   # 允許您手動點擊按鈕執行
 
 jobs:
