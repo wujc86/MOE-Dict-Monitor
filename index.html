@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>教育部辭典監控站</title>
+    <style>
+        :root { --online: #28a745; --offline: #dc3545; --bg: #f4f7f9; }
+        body { font-family: "Microsoft JhengHei", sans-serif; background: var(--bg); display: flex; flex-direction: column; align-items: center; padding: 40px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; width: 100%; max-width: 1200px; }
+        .card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; border-top: 5px solid #ccc; }
+        .Online { border-top-color: var(--online); }
+        .Offline { border-top-color: var(--offline); }
+        .dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; margin-right: 8px; }
+        .status-Online { color: var(--online); font-weight: bold; }
+        .status-Offline { color: var(--offline); font-weight: bold; }
+        #last-update { color: #666; margin-bottom: 30px; font-size: 0.9rem; }
+    </style>
+</head>
+<body>
+
+    <h1 style="color:#2b579a;">教育部國語辭典服務狀態</h1>
+    <div id="last-update">載入中...</div>
+    <div id="dashboard" class="grid"></div>
+
+    <script>
+        async function loadStatus() {
+            try {
+                // 讀取 GitHub 上的 status.json (加上時間戳避免 cache)
+                const res = await fetch('status.json?t=' + Date.now());
+                const data = await res.json();
+                
+                document.getElementById('last-update').innerText = "最後檢查時間：" + data.last_update + " (每小時更新)";
+                
+                const container = document.getElementById('dashboard');
+                container.innerHTML = data.results.map(item => `
+                    <div class="card ${item.status}">
+                        <h3>${item.name}</h3>
+                        <div class="status-${item.status}">
+                            <span class="dot" style="background: ${item.status === 'Online' ? 'var(--online)' : 'var(--offline)'}"></span>
+                            ${item.status === 'Online' ? '正常服務中' : '暫時無法連線'}
+                        </div>
+                        <p><a href="${item.url}" target="_blank" style="color:#007bff; font-size:12px;">前往網站</a></p>
+                    </div>
+                `).join('');
+            } catch (e) {
+                document.getElementById('last-update').innerText = "無法載入狀態資料。";
+            }
+        }
+        loadStatus();
+    </script>
+</body>
+</html>
