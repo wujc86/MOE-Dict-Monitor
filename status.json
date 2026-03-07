@@ -1,0 +1,30 @@
+{
+  "last_update": "2026-03-07 13:45:54",
+  "results": [
+    {
+      "name": "重編國語辭典修訂本",
+      "url": "https://dict.revised.moe.edu.tw/",
+      "status": "Online"
+    },
+    {
+      "name": "國語辭典簡編本",
+      "url": "https://dict.concised.moe.edu.tw/",
+      "status": "Online"
+    },
+    {
+      "name": "國語小字典",
+      "url": "https://dict.mini.moe.edu.tw/",
+      "status": "Online"
+    },
+    {
+      "name": "成語典",
+      "url": "https://dict.idioms.moe.edu.tw/",
+      "status": "Online"
+    },
+    {
+      "name": "異體字字典",
+      "url": "https://dict.variants.moe.edu.tw/",
+      "status": "Online"
+    }
+  ]
+}
