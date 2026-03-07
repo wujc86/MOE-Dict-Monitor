@@ -6,7 +6,7 @@ import pytz
 # 定義監控目標 (教育部五大辭典)
 targets = {
     "重編國語辭典修訂本": "https://dict.revised.moe.edu.tw/",
-    "國語辭典修訂本": "https://dict.concise.moe.edu.tw/",
+    "國語辭典簡編本": "https://dict.concised.moe.edu.tw/",
     "國語小字典": "https://dict.mini.moe.edu.tw/",
     "成語典": "https://dict.idioms.moe.edu.tw/",
     "異體字字典": "https://dict.variants.moe.edu.tw/"
