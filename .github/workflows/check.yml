@@ -1,0 +1,32 @@
+name: MOE Dictionary Health Check
+
+on:
+  schedule:
+    - cron: '0 * * * *' # 每小時整點執行
+  workflow_dispatch:   # 允許您手動點擊按鈕執行
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: pip install requests pytz
+
+      - name: Run health check
+        run: python monitor.py
+
+      - name: Commit and push if status changed
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add status.json
+          git commit -m "Automated status update: $(date)" || exit 0
+          git push
