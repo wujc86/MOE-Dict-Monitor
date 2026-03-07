@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-03-07 21:10:13",
+  "last_update": "2026-03-07 21:47:26",
   "results": [
     {
       "name": "重編國語辭典修訂本",
@@ -9,7 +9,7 @@
     {
       "name": "國語辭典簡編本",
       "url": "https://dict.concised.moe.edu.tw/",
-      "status": "Online"
+      "status": "Error(429)"
     },
     {
       "name": "國語小字典",
