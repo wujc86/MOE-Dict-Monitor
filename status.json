@@ -1,5 +1,5 @@
 {
-  "last_update": "2026-09-26 12:50:59",
+  "last_update": "2026-09-26 17:33:41",
   "results": [
     {
       "name": "重編國語辭典修訂本",
@@ -14,7 +14,7 @@
     {
       "name": "國語小字典",
       "url": "https://dict.mini.moe.edu.tw/",
-      "status": "Offline"
+      "status": "Online"
     },
     {
       "name": "成語典",
